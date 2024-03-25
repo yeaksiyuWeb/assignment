@@ -17,10 +17,10 @@ class AdminSeeder extends Seeder
             [
                 'id' => 1,
                 'username' => 'admin',
-                'password' => 12345,
+                'password' => '12345',
                 'created_at' => '2022-01-31 16:21:18',
                 'updated_at' => '2022-01-31 16:21:18'
             ]
-        ])
+        ]);
     }
 }

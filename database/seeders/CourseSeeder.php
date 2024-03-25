@@ -32,6 +32,6 @@ class CourseSeeder extends Seeder
                 'created_at' => '2022-02-11 00:52:46',
                 'updates_at' => '11-02-2022 06:23:06 AM'
             ]
-        ])
+        ]);
     }
 }
