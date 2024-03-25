@@ -21,7 +21,6 @@ return new class extends Migration
             $table->integer('semester')->nullable;
             $table->integer('course')->nullable;
             $table->timestamp('enroll_date')->useCurrent();
-            $table->timestamps();
         });
     }
 
