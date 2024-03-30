@@ -13,12 +13,14 @@
 
 <body>
 <!-- HEADER END-->
-@extends('layouts.header')
+
+@include('layouts.header')
 
 <!-- LOGO HEADER END-->
-@if(session('alogin'))
-    @extends('layouts.menubar')
-@endif
+{{-- @if(session('alogin')) --}}
+    @include('layouts.menubar')
+{{-- @endif --}}
+
 <!-- MENU SECTION END-->
 <div class="content-wrapper">
     <div class="container">
@@ -108,12 +110,12 @@
         </div>
     </div>
 </div>
-@extends('layouts.footer')
+@include('layouts.footer')
 
 <!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
 <!-- CORE JQUERY SCRIPTS -->
-<script src="{{ asset('assets/js/jquery-1.11.1.js') }}"></script>
+{{-- <script src="{{ asset('assets/js/jquery-1.11.1.js') }}"></script>
 <!-- BOOTSTRAP SCRIPTS -->
-<script src="{{ asset('assets/js/bootstrap.js') }}"></script>
+<script src="{{ asset('assets/js/bootstrap.js') }}"></script> --}}
 </body>
 </html>
