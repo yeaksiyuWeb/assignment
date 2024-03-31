@@ -21,7 +21,7 @@
           <div class="form-group row mb-3">
             <label for="regNo" class="col-md-4 col-form-label text-md-right">{{ __('Registration No') }}</label>
             <div class="col-md-6">
-              <input id="regNo" type="regNo" class="form-control @error('regNo') is-invalid @enderror" name="regNo" value="{{ old('regNo') }}" required autocomplete="regNo" autofocus>
+              <input id="regNo" type="number" class="form-control @error('regNo') is-invalid @enderror" name="regNo" value="{{ old('regNo') }}" required autocomplete="regNo" autofocus>
               @error('regNo')
                 <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
