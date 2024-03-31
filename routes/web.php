@@ -31,8 +31,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/course', [CourseController::class, 'showCoursePage']);
 Route::get('/department',[DepartmentController::class,'showDepartmentPage']);
 Route::get('/semester', [SemesterController::class, 'showSemesterPage']);
+
+//Login for Admin and Student
 Route::get('/login/admin',[LoginController::class,'showAdminLoginForm']);
 Route::get('/login/student',[LoginController::class,'showStudentLoginForm']);
+Route::post('/login/admin',[LoginController::class,'adminLogin']);
+Route::post('/login/student',[LoginController::class,'studentLogin']);
+
 
 
 

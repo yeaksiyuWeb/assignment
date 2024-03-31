@@ -11,22 +11,28 @@
         <div class="card-header text-white" style="background-color: #1c1847"> {{ isset($url) ? ucwords($url) : ""}} {{ __('Login') }}</div>
         @endif
           <div class="card-body">
-          @isset($url)
-          <form method="POST" action='{{ url("login/$url") }}' aria-label="{{ __('Login') }}">
-          @else
-          <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
-          @endisset
+          @if($url == 'admin')
+          <form method="POST" action="/login/admin" aria-label="{{ __('Login') }}">
+          @elseif($url == 'student')
+          <form method="POST" action="login/student" aria-label="{{ __('Login') }}">
+          @endif
 
           @csrf
+
+          @if ($errors->any())
+              <div class="alert alert-danger">
+                  <ul>
+                      @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+          @endif
           <div class="form-group row mb-3">
             <label for="regNo" class="col-md-4 col-form-label text-md-right">{{ __('Registration No') }}</label>
             <div class="col-md-6">
-              <input id="regNo" type="number" class="form-control @error('regNo') is-invalid @enderror" name="regNo" value="{{ old('regNo') }}" required autocomplete="regNo" autofocus>
-              @error('regNo')
-                <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-                </span>
-              @enderror
+              <input id="regNo" type="text" class="form-control @error('regNo') is-invalid @enderror" name="regNo" value="{{ old('regNo') }}"  autofocus></input>
+              
             </div>
           </div>
 
