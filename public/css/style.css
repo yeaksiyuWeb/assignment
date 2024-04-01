@@ -7,11 +7,11 @@ body {
     line-height: 30px;
 }
 
-.set-radius-zero {
+/* .set-radius-zero {
     border-radius: 0px;
     -moz-border-radius: 0px;
     -webkit-border-radius: 0px;
-}
+} */
 
 .content-wrapper {
     margin-top: 40px;

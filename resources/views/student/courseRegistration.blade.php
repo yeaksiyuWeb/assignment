@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="content-wrapper">
-  <div class="container">
+  <div class="container mt-5 mb-5">
       <div class="row">
           <div class="col-md-12">
               <h1 class="page-head-line-student">Course Registration</h1>
@@ -12,7 +12,7 @@
       <div class="row justify-content-center">
           <div class="col-md-6">
               <div class="card">
-              <div class="card-header text-white" style="background-color: #1c1847" >Register Course</div>
+              <div class="card-header">Register Course</div>
               <div class="card-body">
                   <form method="POST" action="course-registration">
                       @csrf
