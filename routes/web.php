@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\SemesterController;
+use App\Http\Controllers\Student\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,19 +19,14 @@ use App\Http\Controllers\SemesterController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
-//Admin
-Route::get('/course', [CourseController::class, 'showCoursePage']);
-Route::get('/department',[DepartmentController::class,'showDepartmentPage']);
-Route::get('/semester', [SemesterController::class, 'showSemesterPage']);
 
 //Login for Admin and Student
 Route::get('/login/admin',[LoginController::class,'showAdminLoginForm']);
@@ -39,10 +35,13 @@ Route::post('/login/admin',[LoginController::class,'adminLogin']);
 Route::post('/login/student',[LoginController::class,'studentLogin']);
 
 
+//Admin
+Route::get('/course', [CourseController::class, 'showCoursePage']);
+Route::get('/department',[DepartmentController::class,'showDepartmentPage']);
+Route::get('/semester', [SemesterController::class, 'showSemesterPage']);
 
 
 //Student
-// Route::view('course-registration','student.courseRegistration');
 Route::get('course-registration',[StudentController::class, 'showCourseRegistrationForm']);
 Route::post('course-registration',[StudentController::class,'createCourseRegistration']);
 

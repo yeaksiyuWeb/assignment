@@ -16,8 +16,12 @@ class LoginController extends Controller
     public function adminLogin(Request $request)
     {
         $request->validate([
-            'regNo' => 'required',
+            'username' => 'required',
             'password' => 'required|min:6'
+        ],[
+            'username.required' => 'Please enter your username',
+            'password.required' => 'Please enter you password.',
+            'password.min' => 'Password must be at least :min characters long.',
         ]);
         return view('home.blade.php');
     }
@@ -30,8 +34,13 @@ class LoginController extends Controller
     public function studentLogin(Request $request)
     {
         $request->validate([
-            'regNo' => 'required',
+            'regNo' => 'required|numeric',
             'password' => 'required|min:6'
+        ],[
+            'regNo.required' => 'Please enter your student registration number',
+            'regNo.numeric' => 'Registration number must be numeric.',
+            'password.required' => 'Please enter you password.',
+            'password.min' => 'Password must be at least :min characters long.',
         ]);
         return view('home.blade.php');
     }

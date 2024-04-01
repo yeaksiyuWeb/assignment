@@ -11,14 +11,8 @@
         <div class="card-header text-white" style="background-color: #1c1847"> {{ isset($url) ? ucwords($url) : ""}} {{ __('Login') }}</div>
         @endif
           <div class="card-body">
-          @if($url == 'admin')
-          <form method="POST" action="/login/admin" aria-label="{{ __('Login') }}">
-          @elseif($url == 'student')
-          <form method="POST" action="login/student" aria-label="{{ __('Login') }}">
-          @endif
-
+          <form method="POST" action='{{ url("login/$url") }}'>
           @csrf
-
           @if ($errors->any())
               <div class="alert alert-danger">
                   <ul>
@@ -28,18 +22,35 @@
                   </ul>
               </div>
           @endif
+          @if($url == 'admin')
+          <div class="form-group row mb-3">
+            <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
+            <div class="col-md-6">
+              <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}"  autofocus></input>
+              @error('username')
+                <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+                </span>
+              @enderror
+            </div>
+          </div>
+          @elseif($url == 'student')
           <div class="form-group row mb-3">
             <label for="regNo" class="col-md-4 col-form-label text-md-right">{{ __('Registration No') }}</label>
             <div class="col-md-6">
               <input id="regNo" type="text" class="form-control @error('regNo') is-invalid @enderror" name="regNo" value="{{ old('regNo') }}"  autofocus></input>
-              
+              @error('regNo')
+                <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+                </span>
+              @enderror
             </div>
           </div>
-
+          @endif
           <div class="form-group row">
             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
             <div class="col-md-6">
-              <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+              <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" >
               @error('password')
                 <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>

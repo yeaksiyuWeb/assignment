@@ -6,16 +6,22 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\CourseRegister;
+use App\Models\Session;
+use App\Models\Department;
+use App\Models\Level;
+use App\Models\Semester;
+use App\Models\Course;
+
 
 class StudentController extends Controller
 {
     public function showCourseRegistrationForm(Request $request){
-        $sess = ['Feb 2024','May 2024', 'Oct 2024'];
-        $departments = ['IT','HR'];
-        $levels = ['1','2','3'];
-        $sems = ['1','2','3'];
-        $courses = ['SQA','SE','AWAD'];
-
+    
+        $sess = Session::pluck('session');
+        $departments = Department::pluck('department');
+        $levels = Level::pluck('level');
+        $sems = Semester::pluck('semester');
+        $courses = Course::pluck('course_name');
 
         $request->session()->put([
             'studName'=>'Ooi Chi Zhe',
@@ -27,11 +33,11 @@ class StudentController extends Controller
 
     public function createCourseRegistration(Request $request){
 
-        $sess = ['Feb 2024','May 2024', 'Oct 2024'];
-        $departments = ['IT','HR'];
-        $levels = ['1','2','3'];
-        $sems = ['1','2','3'];
-        $courses = ['SQA','SE','AWAD'];
+        $sess = Session::pluck('session');
+        $departments = Department::pluck('department');
+        $levels = Level::pluck('level');
+        $sems = Semester::pluck('semester');
+        $courses = Course::pluck('course_name');
 
         $request->validate([
             'regNo' => 'required',
