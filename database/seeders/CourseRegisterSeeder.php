@@ -17,7 +17,7 @@ class CourseRegisterSeeder extends Seeder
         CourseRegister::create([
             'regNo' => '2005232',
             'pincode'=>'200100',
-            'session'=> 'Feb 2024',
+            'session'=> '022024',
             'department'=>'IT',
             'level'=>'1',
             'semester'=> '3',
@@ -27,7 +27,7 @@ class CourseRegisterSeeder extends Seeder
         CourseRegister::create([
             'regNo' => '2005232',
             'pincode'=>'200100',
-            'session'=> 'May 2024',
+            'session'=> '052024',
             'department'=>'IT',
             'level'=>'2',
             'semester'=> '3',
@@ -37,7 +37,7 @@ class CourseRegisterSeeder extends Seeder
         CourseRegister::create([
             'regNo' => '2005232',
             'pincode'=>'200100',
-            'session'=> 'Oct 2024',
+            'session'=> '102024',
             'department'=>'IT',
             'level'=>'3',
             'semester'=> '3',

@@ -2,9 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\Models\Admin;
 
 class AdminSeeder extends Seeder
 {
@@ -13,14 +12,9 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('admin')->insert([
-            [
-                'id' => 1,
-                'username' => 'admin',
-                'password' => '12345',
-                'created_at' => '2022-01-31 16:21:18',
-                'updated_at' => '2022-01-31 16:21:18'
-            ]
+        Admin::create([
+            'username' => 'admin',
+            'password'=> bcrypt('12345'),
         ]);
     }
 }
