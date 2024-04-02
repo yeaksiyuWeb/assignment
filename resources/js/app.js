@@ -12,5 +12,5 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-// require('./components/CourseRegistration');
-require('./components/Test');
+require('./components/Example');
+require('./components/Department')

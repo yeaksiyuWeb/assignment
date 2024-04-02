@@ -1,4 +1,4 @@
-
+<!-- 
 <?php
 
 // session_start();
@@ -28,30 +28,28 @@
 //                   $_SESSION['delmsg']="Department deleted !!";
 //       }
 
-?>
-
+?> -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Admin | department</title>
-    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/admin/bootstrap.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/admin/font-awesome.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/admin/style.css') }}" rel="stylesheet" />
 </head>
 
+
 <body>
-<?php //include('includes/header.php');?>
-    <!-- LOGO HEADER END-->
-<?php 
-// if($_SESSION['alogin']!="")
-// {
-//  include('includes/menubar.php');
-// }
- ?>
+@include('layouts.header')
+@include('layouts.menubar')
+@if(session('alogin'))
+ @include('layouts.menubar')
+@endif
+
     <!-- MENU SECTION END-->
     <div class="content-wrapper">
         <div class="container">
@@ -92,42 +90,8 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <div class="table-responsive table-bordered">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>department</th>
-                                            <th>Creation Date</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-<?php
-// $sql=mysqli_query($con,"select * from department");
-// $cnt=1;
-// while($row=mysqli_fetch_array($sql))
-// {
-?>
+                            <div id="dept-listing-table">
 
-
-                                        <tr>
-                                            <td><?php //echo $cnt;?></td>
-                                            <td><?php //echo htmlentities($row['department']);?></td>
-                                            <td><?php //echo htmlentities($row['creationDate']);?></td>
-                                            <td>
-  <a href="department.php?id=<?php //echo $row['id']?>&del=delete" onClick="return confirm('Are you sure you want to delete?')">
-                                            <button class="btn btn-danger">Delete</button>
-</a>
-                                            </td>
-                                        </tr>
-<?php 
-// $cnt++;
-//} ?>
-
-                                        
-                                    </tbody>
-                                </table>
                             </div>
                         </div>
                     </div>
@@ -135,20 +99,18 @@
                 </div>
             </div>
 
-
-
-
-
         </div>
     </div>
     <!-- CONTENT-WRAPPER SECTION END-->
-  <?php //include('includes/footer.php');?>
+@include('layouts.footer')
     <!-- FOOTER SECTION END-->
     <!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
     <!-- CORE JQUERY SCRIPTS -->
-    <script src="assets/js/jquery-1.11.1.js"></script>
+    <!-- <script src="assets/js/jquery-1.11.1.js"></script> -->
     <!-- BOOTSTRAP SCRIPTS  -->
-    <script src="assets/js/bootstrap.js"></script>
+    <!-- <script src="assets/js/bootstrap.js"></script> -->
 </body>
+<script src="/js/app.js"></script>
 </html>
-<?php ?>
+
+

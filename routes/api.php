@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Student\CourseRegisterController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\DepartmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,8 @@ use App\Http\Controllers\Controller;
 // });
 
 Route::post('/post',[CourseRegisterController::class,'store']);
+
+// ----------- Department ----------- //
+Route::get('/departments',[DepartmentController::class,'getAll']);
+Route::delete('/department/{id}',[DepartmentController::class,'delete']);
+
