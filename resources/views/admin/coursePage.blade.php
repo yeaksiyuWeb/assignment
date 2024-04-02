@@ -1,64 +1,53 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Admin | Course</title>
-    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/front-awesome.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
-</head>
+@extends('layouts.app')
 
-<body>
+@section('content')
+{{-- <body>
 <!-- HEADER END-->
 
-@include('layouts.header')
+@include('layouts.header') --}}
 
 <!-- LOGO HEADER END-->
-{{-- @if(session('alogin')) --}}
-    @include('layouts.menubar')
+{{-- @if(session('alogin'))
+    @include('layouts.menubar') --}}
 {{-- @endif --}}
 
 <!-- MENU SECTION END-->
 <div class="content-wrapper">
-    <div class="container">
+    <div class="container mt-5 mb-5">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="page-head-line">Course</h1>
+                <h1 class="page-head-line-admin">Course</h1>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-3"></div>
+        <div class="row justify-content-center">
             <div class="col-md-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+                <div class="card bottom-10">
+                    <div class="card-header">
                         Course
                     </div>
-                    <div class="panel-body">
+                    <div class="card-body">
                         <form name="dept" method="post">
-                            <div class="form-group">
+                            <div class="form-group row mb-2">
                                 <label for="coursecode">Course Code</label>
                                 <input type="text" class="form-control" id="coursecode" name="coursecode" placeholder="Course Code" required />
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group row mb-2">
                                 <label for="coursename">Course Name</label>
                                 <input type="text" class="form-control" id="coursename" name="coursename" placeholder="Course Name" required />
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group row mb-2">
                                 <label for="courseunit">Course unit</label>
                                 <input type="text" class="form-control" id="courseunit" name="courseunit" placeholder="Course Unit" required />
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group row mb-2">
                                 <label for="seatlimit">Seat limit</label>
                                 <input type="text" class="form-control" id="seatlimit" name="seatlimit" placeholder="Seat limit" required />
                             </div>
 
-                            <button type="submit" name="submit" class="btn btn-default">Submit</button>
+                            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
                 </div>
@@ -69,11 +58,11 @@
         @endif
         <font color="red" align="center">{{ session('delmsg') }}</font>
         <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div class="card">
+                <div class="card-header">
                     Manage Course
                 </div>
-                <div class="panel-body">
+                <div class="card-body">
                     <div class="table-responsive table-bordered">
                         <table class="table">
                             <thead>
@@ -110,12 +99,13 @@
         </div>
     </div>
 </div>
-@include('layouts.footer')
+@endsection
+{{-- @include('layouts.footer') --}}
 
 <!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
 <!-- CORE JQUERY SCRIPTS -->
 {{-- <script src="{{ asset('assets/js/jquery-1.11.1.js') }}"></script>
 <!-- BOOTSTRAP SCRIPTS -->
 <script src="{{ asset('assets/js/bootstrap.js') }}"></script> --}}
-</body>
-</html>
+{{-- </body>
+</html> --}}

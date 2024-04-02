@@ -1,21 +1,6 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Admin | Course</title>
-    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/front-awesome.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
-</head>
+@extends('layouts.app')
 
-@include('layouts.header')
-
-@if(session('alogin'))
-    @include('layouts.menubar')
-@endif
+@section('content')
 <!-- MENU SECTION END-->
 <div class="content-wrapper">
     <div class="container">
@@ -90,8 +75,4 @@
         </div>
     </div>
 </div>
-
-@include('layouts.footer')
-
-</body>
-</html>
+@endsection

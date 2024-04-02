@@ -26,30 +26,35 @@
     <link href="{{ asset('css/customCSS.css') }}" rel="stylesheet">
 </head>
 <body>
-    <!-- HEADER END-->
-    
+    <!--Will need to change later to handle auth tokens-->
     @if(session('studName'))
+        <!-- Student layout -->
         @include('layouts.welcomeheader')
+        @include('layouts.studentHeader')
+        <!-- LOGO HEADER END-->
+        @include('layouts.studentMenubar')
+        {{-- @if(Auth->check())
+            @include('layouts.studentMenubar')
+        @endif --}}
+    @elseif(session('adminName'))
+        @include('layouts.adminHeader')
+        @include('layouts.adminMenubar')
+        {{-- @if(Auth->check())
+            @include('layouts.adminMenubar')
+        @endif --}}
     @endif
-
-    @include('layouts.header2')
-
-    <!-- LOGO HEADER END-->
-    @if(session('studName'))
-        @include('layouts.menubar2')
-    @endif
-
     <!-- MENU SECTION END-->
-
     <div id="app">
-        
-
         <main class="py-4">
             @yield('content')
         </main>
     </div>
 
-    @include('layouts.footer')
+    @if(session('studName'))
+        @include('layouts.studentFooter')
+    @elseif(session('adminName'))
+        @include('layouts.adminFooter')
+    @endif
 </body>
 <!-- <script src="/js/app.js"></script> -->
 </html>
