@@ -7,6 +7,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\Student\StudentController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,10 +43,9 @@ Route::get('/semester', [SemesterController::class, 'showSemesterPage']);
 
 
 //Student
-Route::get('course-registration',[StudentController::class, 'showCourseRegistrationForm']);
-Route::post('course-registration',[StudentController::class,'createCourseRegistration']);
+Route::get('/student/course-registration',[StudentController::class, 'showCourseRegistrationForm']);
+Route::post('/student/course-registration',[StudentController::class,'createCourseRegistration']);
+Route::get('/student/registration-history',[StudentController::class,'showRegistrationHistory']);
 
-
-
-// Route::view('testerror','testerror');
-
+//post
+Route::get('/posts/index',[PostController::class,'display']);
