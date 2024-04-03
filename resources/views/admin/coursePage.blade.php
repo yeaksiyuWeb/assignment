@@ -63,43 +63,15 @@
                     Manage Course
                 </div>
                 <div class="card-body">
-                    <div class="table-responsive table-bordered">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Course Code</th>
-                                    <th>Course Name</th>
-                                    <th>Course Unit</th>
-                                    <th>Seat limit</th>
-                                    <th>Creation Date</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {{-- @foreach($courses as $course)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $course->courseCode }}</td>
-                                        <td>{{ $course->courseName }}</td>
-                                        <td>{{ $course->courseUnit }}</td>
-                                        <td>{{ $course->noofSeats }}</td>
-                                        <td>{{ $course->creationDate }}</td>
-                                        <td>
-                                            <a href="{{ route('edit-course', $course->id) }}"><button class="btn btn-primary"><i class="fa fa-edit"></i> Edit</button></a>
-                                            <a href="{{ route('delete-course', $course->id) }}" onclick="return confirm('Are you sure you want to delete?')"><button class="btn btn-danger">Delete</button></a>
-                                        </td>
-                                    </tr>
-                                @endforeach --}}
-                            </tbody>
-                        </table>
-                    </div>
+                    <div id="course-table"></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
+
+<script src="/js/app.js"></script>
 {{-- @include('layouts.footer') --}}
 
 <!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
