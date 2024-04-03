@@ -15,4 +15,4 @@ require('./bootstrap');
 require('./components/Example');
 require('./components/Department')
 require('./components/CourseTable')
-require('./components/ConfirmModal')
+require('./components/ConfirmationModal')

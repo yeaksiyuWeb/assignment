@@ -1,7 +1,7 @@
 ;import React from "react";
 import { Button, Modal, ModalBody, ModalFooter } from "reactstrap";
 
-const ConfirmModal = ({message, toggleModal, handleAction, isModalOpen}) => {
+const ConfirmationModal = ({message, toggleModal, handleAction, isModalOpen}) => {
 
     return(
         <Modal isOpen={isModalOpen} toggle={toggleModal} centered >
@@ -16,4 +16,4 @@ const ConfirmModal = ({message, toggleModal, handleAction, isModalOpen}) => {
     );
 };
 
-export default ConfirmModal;
+export default ConfirmationModal;

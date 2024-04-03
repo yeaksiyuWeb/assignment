@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import  ReactDOM  from "react-dom";
 import axios from "axios";
 import { Button } from "reactstrap";
-import ConfirmModal from "./ConfirmModal";
+import ConfirmationModal from "./ConfirmationModal";
 
 export default class CourseTable extends Component {
     constructor(){
@@ -86,7 +86,7 @@ export default class CourseTable extends Component {
                 </table>
                 
                 {this.state.openModal && selectedCourse && (
-                    <ConfirmModal 
+                    <ConfirmationModal 
                         message={`Are you sure you want delete ${selectedCourse.course_code} ${selectedCourse.course_name}`}
                         isModalOpen={this.state.openModal}
                         toggleModal={() => this.toggleConfirmModal()}
