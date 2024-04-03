@@ -19,6 +19,19 @@
 }
 
 
-
-/*Header CSS*/
-
+.post {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+.post .post-header {
+  margin-bottom: 10px;
+}
+.post .post-content {
+  margin-bottom: 15px;
+}
+.post .post-footer {
+  font-size: 14px;
+  color: #666;
+}
