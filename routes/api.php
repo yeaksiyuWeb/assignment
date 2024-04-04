@@ -26,4 +26,3 @@ Route::post('/post',[CourseRegisterController::class,'store']);
 // ----------- Department ----------- //
 Route::get('/departments',[DepartmentController::class,'getAll']);
 Route::delete('/department/{id}',[DepartmentController::class,'delete']);
-

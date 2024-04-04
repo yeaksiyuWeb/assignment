@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\SemesterController;
+use App\Http\Controllers\SessionController;
 use App\Http\Controllers\Student\StudentController;
 
 /*
@@ -38,8 +39,10 @@ Route::post('/login/student',[LoginController::class,'studentLogin']);
 //Admin
 Route::get('/course', [CourseController::class, 'showCoursePage']);
 Route::get('/department',[DepartmentController::class,'showDepartmentPage']);
+Route::post('/addDept', [DepartmentController::class, 'save']);
 Route::get('/semester', [SemesterController::class, 'showSemesterPage']);
-
+Route::get('/session', [SessionController::class, 'showSessionPage']);
+Route::post('/addSession', [SessionController::class, 'save']);
 
 //Student
 Route::get('course-registration',[StudentController::class, 'showCourseRegistrationForm']);

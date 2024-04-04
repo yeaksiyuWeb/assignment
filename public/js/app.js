@@ -5204,18 +5204,18 @@ var Department = /*#__PURE__*/function (_Component) {
     key: "render",
     value: function render() {
       var _this4 = this;
-      var departments = this.state.departments.map(function (d) {
+      var departments = this.state.departments.map(function (department) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-            children: d.id
+            children: department.id
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-            children: d.department
+            children: department.department
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-            children: d.created_at
+            children: department.created_at
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
               color: "danger",
-              onClick: _this4.deleteDepartment.bind(_this4, d.id, d.department),
+              onClick: _this4.deleteDepartment.bind(_this4, department.id, department.department),
               children: "Delete"
             })
           })]

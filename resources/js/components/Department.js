@@ -35,14 +35,14 @@ export default class Department extends Component {
     }
 
     render(){
-        let departments = this.state.departments.map((d) => {
+        let departments = this.state.departments.map((department) => {
             return(
                 <tr>
-                    <td>{d.id}</td>
-                    <td>{d.department}</td>
-                    <td>{d.created_at}</td>
+                    <td>{department.id}</td>
+                    <td>{department.department}</td>
+                    <td>{department.created_at}</td>
                     <td>
-                        <Button color="danger" onClick={this.deleteDepartment.bind(this, d.id, d.department)}>Delete</Button>
+                        <Button color="danger" onClick={this.deleteDepartment.bind(this, department.id, department.department)}>Delete</Button>
                     </td>
                 </tr>
             );

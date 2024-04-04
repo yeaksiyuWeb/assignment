@@ -26,4 +26,16 @@ class DepartmentController extends Controller
         $dept -> delete();
         return 204;
     }
+
+    public function save(Request $request){
+        $request -> validate([
+            'department' => 'required'
+        ]);
+        $department = new Department;
+        $currentDateTime = date("Y-m-d h:i:s"); 
+        $department->created_at = $currentDateTime;
+        $department->fill($request->all());
+        $department->save();
+        return redirect("/department");
+    }
 }
