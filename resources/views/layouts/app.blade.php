@@ -19,7 +19,6 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     
-    
     <!-- Bootstrap Icon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     
@@ -37,7 +36,7 @@
         {{-- @if(Auth->check())
             @include('layouts.studentMenubar')
         @endif --}}
-    @elseif(session('adminName'))
+    @elseif(session('adminName') || true)
         @include('layouts.adminHeader')
         @include('layouts.adminMenubar')
         {{-- @if(Auth->check())
@@ -53,7 +52,7 @@
 
     @if(session('studName'))
         @include('layouts.studentFooter')
-    @elseif(session('adminName'))
+    @elseif(session('adminName') || true)
         @include('layouts.adminFooter')
     @endif
 </body>

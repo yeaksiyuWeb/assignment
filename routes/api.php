@@ -20,14 +20,14 @@ use App\Http\Controllers\DepartmentController;
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
-// });
+// })
 
-Route::post('/post',[CourseRegisterController::class,'store']);
-
-// ----------- Department ----------- //
+// ----------- Course --------------- //
 Route::get('/courses',[CourseController::class, 'getAll']);
 Route::put('/course/{id}',[CourseController::class, 'updateCourse']);
 Route::delete('/course/{id}',[CourseController::class, 'deleteCourse']);
+
+// ----------- Department ----------- //
 Route::get('/departments',[DepartmentController::class,'getAll']);
 Route::delete('/department/{id}',[DepartmentController::class,'delete']);
 

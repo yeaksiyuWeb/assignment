@@ -38,6 +38,7 @@ Route::post('/login/student',[LoginController::class,'studentLogin']);
 
 //Admin
 Route::get('/course', [CourseController::class, 'showCoursePage']);
+Route::post('/course', [CourseController::class, 'addCourse']);
 Route::get('/department',[DepartmentController::class,'showDepartmentPage']);
 Route::get('/semester', [SemesterController::class, 'showSemesterPage']);
 
