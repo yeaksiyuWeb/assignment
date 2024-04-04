@@ -9,6 +9,7 @@ use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\RegisterStudController;
 use App\Http\Controllers\ManageStudentController;
 
 /*
@@ -47,6 +48,8 @@ Route::get('/semester', [SemesterController::class, 'showSemesterPage']);
 Route::post('/semester', [SemesterController::class, 'addSemester']);
 Route::get('/session', [SessionController::class, 'showSessionPage']);
 Route::post('/addSession', [SessionController::class, 'save']);
+Route::get('/student-registration', [RegisterStudController::class, 'showRegisterStudentPage']);
+Route::post('/addStudent', [RegisterStudController::class, 'addStudent']);
 Route::get('/manageStudent', [ManageStudentController::class, 'showManageStudent']);
 
 //Student
@@ -55,4 +58,4 @@ Route::post('/student/course-registration',[StudentController::class,'createCour
 Route::get('/student/registration-history',[StudentController::class,'showRegistrationHistory']);
 
 //post
-Route::get('/posts/index',[PostController::class,'display']);
+Route::get('/posts',[PostController::class,'display']);
