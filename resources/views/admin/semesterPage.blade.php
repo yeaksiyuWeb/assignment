@@ -3,33 +3,35 @@
 @section('content')
 <!-- MENU SECTION END-->
 <div class="content-wrapper">
-    <div class="container">
+    <div class="container mt-5 mb-5">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="page-head-line">Course</h1>
+                <h1 class="page-head-line-admin">Semester</h1>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-3"></div>
+        <div class="row justify-content-center mb-5">
             <div class="col-md-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+                <div class="card bottom-10">
+                    <div class="card-header">
                         Semester
                     </div>
-                    <div class="panel-body">
-                        @if(session('msg'))
-                        <font color="green" align="center">{{ session('msg') }}</font>
-                        {{ session()->forget('msg') }}
-                        @endif
-
-                        {{-- <form name="semester" method="post" action="{{ route('semester.store') }}"> --}}
-                        <form method="post">
-                            @csrf
-                            <div class="form-group">
-                                <label for="semester">Add Semester</label>
-                                <input type="text" class="form-control" id="semester" name="semester" placeholder="Semester" required />
+                    <div class="card-body">
+                        @if ($errors->any())
+                            <div class="alert alert-danger mt-1">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
                             </div>
-                            <button type="submit" name="submit" class="btn btn-default">Submit</button>
+                        @endif
+                        <form method="post" action="semester">
+                            @csrf
+                            <div class="form-group row mb-2">
+                                <label for="semester">Add Semester</label>
+                                <input type="text" class="form-control col-6" id="semester" name="semester" placeholder="Semester" />
+                            </div>
+                            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
                 </div>
@@ -37,42 +39,17 @@
         </div>
         <font color="red" align="center">{{ session('delmsg') }}</font>
         <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Manage Course
+            <div class="card">
+                <div class="card-header">
+                    Manage Semester
                 </div>
-                <div class="panel-body">
-                    <div class="table-responsive table-bordered">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Semester</th>
-                                    <th>Creation Date</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {{-- @foreach($semesters as $semester)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $semester->semester }}</td>
-                                        <td>{{ $semester->created_at }}</td>
-                                        <td>
-                                            <form method="post" action="{{ route('semester.destroy', $semester->id) }}">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" onclick="return confirm('Are you sure you want to delete?')">Delete</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach --}}
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="card-body">
+                    <div id="semester-table"></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
+
+<script src="/js/app.js"></script>

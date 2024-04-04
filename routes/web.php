@@ -43,6 +43,7 @@ Route::post('/course', [CourseController::class, 'addCourse']);
 Route::get('/department',[DepartmentController::class,'showDepartmentPage']);
 Route::post('/addDept', [DepartmentController::class, 'save']);
 Route::get('/semester', [SemesterController::class, 'showSemesterPage']);
+Route::post('/semester', [SemesterController::class, 'addSemester']);
 Route::get('/session', [SessionController::class, 'showSessionPage']);
 Route::post('/addSession', [SessionController::class, 'save']);
 
