@@ -1,46 +1,7 @@
-<?php
-// session_start();
-// include('includes/config.php');
-// if(strlen($_SESSION['alogin'])==0)
-//     {   
-// header('location:index.php');
-// }
-// else{
-
-// if(isset($_POST['submit']))
-// {
-//   $sesssion=$_POST['sesssion'];
-// $ret=mysqli_query($con,"insert into session(session) values('$sesssion')");
-// if($ret)
-// {
-// $_SESSION['msg']="Session Created Successfully !!";
-// }
-// else
-// {
-//   $_SESSION['msg']="Error : Session not created";
-// }
-// }
-// if(isset($_GET['del']))
-//       {
-//               mysqli_query($con,"delete from session where id = '".$_GET['id']."'");
-//                   $_SESSION['delmsg']="Session deleted !!";
-//       }
-?>
 
 @extends('layouts.app')
 @section('content')
 
-
-<?php 
-// if($_SESSION['alogin']!="")
-// {
-//  include('includes/menubar.php');
-// }
- ?>
-
-@if ($errors->has('session'))
-    <div id="error-message">{{ $errors->first('session') }}</div>
-@endif
 
     <!-- MENU SECTION END-->
     <div class="content-wrapper">
@@ -92,32 +53,7 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <div class="table-responsive table-bordered">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Session</th>
-                                            <th>Creation Date</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($sessions as $session)
-                                        <tr>
-                                            <td>{{ $session->id }}</td>
-                                            <td>{{ $session->session }}</td>
-                                            <td>{{ $session->created_at }}</td>
-                                            <td>
-  <a href="session.php?id=<?php //echo $row['id']?>&del=delete" onClick="return confirm('Are you sure you want to delete?')">
-                                            <button class="btn btn-danger">Delete</button>
-</a>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                        
-                                    </tbody>
-                                </table>
+                            <div id="sess-listing-table">
                             </div>
                         </div>
                     </div>
@@ -125,12 +61,9 @@
                 </div>
             </div>
 
-
-
-
-
         </div>
     </div>
+@endsection
     <!-- CONTENT-WRAPPER SECTION END-->
     <!-- FOOTER SECTION END-->
     <!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->

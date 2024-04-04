@@ -13,12 +13,17 @@ class SessionController extends Controller
     }
 
     public function showSessionPage(){
-        $sessions = $this->getAll();
-        return view('admin/session', ['sessions' => $sessions]);
+        return view('admin/session');
     }
 
     public function getAll(){
         return Session::all();
+    }
+
+    public function delete($id){
+        $session = Session::findOrFail($id);
+        $session -> delete();
+        return 204;
     }
 
     public function save(Request $request){

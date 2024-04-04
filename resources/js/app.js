@@ -16,3 +16,4 @@ require('./components/Example');
 require('./components/Department')
 require('./components/CourseTable')
 require('./components/ConfirmationModal')
+require('./components/Session')
