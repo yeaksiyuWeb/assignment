@@ -4,26 +4,26 @@ import axios from 'axios';
 import { Button } from 'reactstrap';
 import ConfirmationModal from "./ConfirmationModal";
 
-export default class Session extends Component {
+export default class DepartmentTable extends Component {
     constructor(){
         super()
         this.state = {
-            sessions: [],
+            departments: [],
             openConfirmModal: false,
-            selectedSession: null,
+            selectedDepartment: null,
         }
     }
 
     loadList() {
-        axios.get('http://127.0.0.1:8000/api/sessions').then((response) => {   
+        axios.get('http://127.0.0.1:8000/api/departments').then((response) => {   
             this.setState({
-                sessions: response.data
+                departments: response.data
             })
         })
     }
 
-    deleteSession(id){
-        axios.delete('http://127.0.0.1:8000/api/session/' + id, {
+    deleteDepartment(id){
+        axios.delete('http://127.0.0.1:8000/api/department/' + id, {
             
         }).then((response) => {
             this.loadList()
@@ -31,30 +31,35 @@ export default class Session extends Component {
                 openConfirmModal: !prevState.openConfirmModal,
             }));
         })
+        // if(confirm('Are you sure you want to delete ' + name + '?')){
+        //     console.log('Confirm delete department id=', id);
+            
+        // }
     }
 
     componentWillMount(){
         this.loadList();
     }
 
-    toggleConfirmModal(session) {
+    toggleConfirmModal(department) {
         this.setState((prevState) => ({
             openConfirmModal: !prevState.openConfirmModal,
-            selectedSession: session
+            selectedDepartment: department
         }));
     }
 
     render(){
-        const {selectedSession} = this.state;
+        const {selectedDepartment} = this.state;
 
-        let sessions = this.state.sessions.map((session) => {
+        let departments = this.state.departments.map((department) => {
             return(
                 <tr>
-                    <td>{session.id}</td>
-                    <td>{session.session}</td>
-                    <td>{session.created_at}</td>
+                    <td>{department.id}</td>
+                    <td>{department.department}</td>
+                    <td>{department.created_at}</td>
                     <td>
-                        <Button color="danger" onClick={() => this.toggleConfirmModal(session)}> Delete </Button>
+                        <Button color="danger" onClick={() => this.toggleConfirmModal(department)}> Delete </Button>
+                        {/* <Button color="danger" onClick={this.deleteDepartment.bind(this, department.id, department.department)}>Delete</Button> */}
                     </td>
                 </tr>
             );
@@ -66,22 +71,22 @@ export default class Session extends Component {
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Session</th>
+                            <th>Department</th>
                             <th>Creation Date</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {sessions}
+                        {departments}
                     </tbody>
                 </table>
 
-                {selectedSession && (
+                {selectedDepartment && (
                     <ConfirmationModal 
-                        message={`Are you sure you want delete '${selectedSession.session}'?`}
+                        message={`Are you sure you want delete '${selectedDepartment.department}'?`}
                         isModalOpen={this.state.openConfirmModal}
                         toggleModal={() => this.toggleConfirmModal()}
-                        handleAction={() => this.deleteSession(selectedSession.id)}
+                        handleAction={() => this.deleteDepartment(selectedDepartment.id)}
                     />
                 )}
 
@@ -90,6 +95,6 @@ export default class Session extends Component {
     }
 }
 
-if(document.getElementById('sess-listing-table')){
-    ReactDOM.render(<Session />, document.getElementById('sess-listing-table'))
+if(document.getElementById('dept-listing-table')){
+    ReactDOM.render(<DepartmentTable />, document.getElementById('dept-listing-table'))
 }

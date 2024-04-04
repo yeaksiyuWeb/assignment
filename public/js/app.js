@@ -5085,11 +5085,12 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
  */
 
 __webpack_require__(/*! ./components/Example */ "./resources/js/components/Example.js");
-__webpack_require__(/*! ./components/Department */ "./resources/js/components/Department.js");
+__webpack_require__(/*! ./components/DepartmentTable */ "./resources/js/components/DepartmentTable.js");
 __webpack_require__(/*! ./components/CourseTable */ "./resources/js/components/CourseTable.js");
 __webpack_require__(/*! ./components/ConfirmationModal */ "./resources/js/components/ConfirmationModal.js");
 __webpack_require__(/*! ./components/SemesterTable */ "./resources/js/components/SemesterTable.js");
-__webpack_require__(/*! ./components/Session */ "./resources/js/components/Session.js");
+__webpack_require__(/*! ./components/SessionTable */ "./resources/js/components/SessionTable.js");
+__webpack_require__(/*! ./components/ManageStudentTable */ "./resources/js/components/ManageStudentTable.js");
 
 /***/ }),
 
@@ -5505,16 +5506,16 @@ if (document.getElementById('course-table')) {
 
 /***/ }),
 
-/***/ "./resources/js/components/Department.js":
-/*!***********************************************!*\
-  !*** ./resources/js/components/Department.js ***!
-  \***********************************************/
+/***/ "./resources/js/components/DepartmentTable.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/DepartmentTable.js ***!
+  \****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Department)
+/* harmony export */   "default": () => (/* binding */ DepartmentTable)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
@@ -5542,11 +5543,11 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Objec
 
 
 
-var Department = /*#__PURE__*/function (_Component) {
-  function Department() {
+var DepartmentTable = /*#__PURE__*/function (_Component) {
+  function DepartmentTable() {
     var _this;
-    _classCallCheck(this, Department);
-    _this = _callSuper(this, Department);
+    _classCallCheck(this, DepartmentTable);
+    _this = _callSuper(this, DepartmentTable);
     _this.state = {
       departments: [],
       openConfirmModal: false,
@@ -5554,8 +5555,8 @@ var Department = /*#__PURE__*/function (_Component) {
     };
     return _this;
   }
-  _inherits(Department, _Component);
-  return _createClass(Department, [{
+  _inherits(DepartmentTable, _Component);
+  return _createClass(DepartmentTable, [{
     key: "loadList",
     value: function loadList() {
       var _this2 = this;
@@ -5656,7 +5657,7 @@ var Department = /*#__PURE__*/function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 
 if (document.getElementById('dept-listing-table')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Department, {}), document.getElementById('dept-listing-table'));
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(DepartmentTable, {}), document.getElementById('dept-listing-table'));
 }
 
 /***/ }),
@@ -5702,6 +5703,366 @@ function Example() {
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Example);
 if (document.getElementById('example')) {
   react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Example, {}), document.getElementById('example'));
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/ManageStudentTable.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/ManageStudentTable.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ManageStudentTable)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Button.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Modal.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/ModalHeader.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/ModalBody.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/FormGroup.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Label.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Input.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/ModalFooter.js");
+/* harmony import */ var _ConfirmationModal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ConfirmationModal */ "./resources/js/components/ConfirmationModal.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+var ManageStudentTable = /*#__PURE__*/function (_Component) {
+  function ManageStudentTable() {
+    var _this;
+    _classCallCheck(this, ManageStudentTable);
+    _this = _callSuper(this, ManageStudentTable);
+    _this.state = {
+      students: [],
+      openConfirmModal: false,
+      openFormModal: false,
+      updateStudentData: {
+        id: "",
+        studentName: "",
+        pincode: "",
+        session: "",
+        department: "",
+        semester: "",
+        cgpa: ""
+      },
+      selectedStudent: null,
+      openPasswordModal: false
+    };
+    return _this;
+  }
+  _inherits(ManageStudentTable, _Component);
+  return _createClass(ManageStudentTable, [{
+    key: "loadList",
+    value: function loadList() {
+      var _this2 = this;
+      axios__WEBPACK_IMPORTED_MODULE_2___default().get('http://127.0.0.1:8000/api/students').then(function (response) {
+        _this2.setState({
+          students: response.data
+        });
+      });
+    }
+  }, {
+    key: "deleteStudent",
+    value: function deleteStudent(id) {
+      var _this3 = this;
+      axios__WEBPACK_IMPORTED_MODULE_2___default()["delete"]('http://127.0.0.1:8000/api/student/' + id, {}).then(function (response) {
+        _this3.loadList();
+        _this3.setState(function (prevState) {
+          return {
+            openConfirmModal: !prevState.openConfirmModal
+          };
+        });
+      });
+    }
+  }, {
+    key: "callUpdateStudent",
+    value: function callUpdateStudent(student) {
+      this.setState({
+        selectedStudent: student,
+        updateStudentData: {
+          id: student.id,
+          studentName: student.studentName,
+          pincode: student.pincode,
+          session: student.session,
+          department: student.department,
+          semester: student.semester,
+          cgpa: student.cgpa
+        },
+        openFormModal: !this.state.openConfirmModal
+      });
+    }
+  }, {
+    key: "updateStudent",
+    value: function updateStudent() {
+      var _this4 = this;
+      var _this$state$updateStu = this.state.updateStudentData,
+        id = _this$state$updateStu.id,
+        studentName = _this$state$updateStu.studentName,
+        pincode = _this$state$updateStu.pincode,
+        session = _this$state$updateStu.session,
+        department = _this$state$updateStu.department,
+        semester = _this$state$updateStu.semester,
+        cgpa = _this$state$updateStu.cgpa;
+      axios__WEBPACK_IMPORTED_MODULE_2___default().put('http://127.0.0.1:8000/api/student/' + this.state.updateStudentData.id, {
+        studentName: studentName,
+        pincode: pincode,
+        session: session,
+        department: department,
+        semester: semester,
+        cgpa: cgpa
+      }).then(function (response) {
+        _this4.loadList();
+        _this4.setState({
+          openFormModal: false,
+          updateStudentData: {
+            id: "",
+            studentName: "",
+            pincode: "",
+            session: "",
+            department: "",
+            semester: "",
+            cgpa: ""
+          }
+        });
+        alert("Student ".concat(id, " is updated"));
+      });
+    }
+  }, {
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      this.loadList();
+    }
+  }, {
+    key: "toggleConfirmModal",
+    value: function toggleConfirmModal(student) {
+      this.setState(function (prevState) {
+        return {
+          openConfirmModal: !prevState.openConfirmModal,
+          selectedStudent: student
+        };
+      });
+    }
+  }, {
+    key: "toggleFormModal",
+    value: function toggleFormModal() {
+      this.setState(function (prevState) {
+        return {
+          openFormModal: !prevState.openFormModal
+        };
+      });
+    }
+  }, {
+    key: "resetPassword",
+    value: function resetPassword() {}
+  }, {
+    key: "togglePasswordModal",
+    value: function togglePasswordModal() {}
+  }, {
+    key: "render",
+    value: function render() {
+      var _this5 = this;
+      var selectedStudent = this.state.selectedStudent;
+      var students = this.state.students.map(function (student) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+            children: student.id
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+            children: student.regNo
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+            children: student.studentName
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+            children: student.pincode
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+            children: student.created_at
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("td", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+              style: {
+                marginRight: 10
+              },
+              color: "primary",
+              onClick: _this5.callUpdateStudent.bind(_this5, student),
+              children: "Edit"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+              style: {
+                marginRight: 10
+              },
+              color: "danger",
+              onClick: function onClick() {
+                return _this5.toggleConfirmModal(student);
+              },
+              children: "Delete"
+            })]
+          })]
+        });
+      });
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        "class": "table-responsive table-bordered",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("table", {
+          "class": "table",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("thead", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                children: "#"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                children: "Reg No "
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                children: "Student Name "
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                children: "Pincode"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                children: "Reg Date"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                children: "Action"
+              })]
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("tbody", {
+            children: students
+          })]
+        }), selectedStudent && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_ConfirmationModal__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          message: "Are you sure you want delete '".concat(selectedStudent.regNo, " ").concat(selectedStudent.studentName, "'?"),
+          isModalOpen: this.state.openConfirmModal,
+          toggleModal: function toggleModal() {
+            return _this5.toggleConfirmModal();
+          },
+          handleAction: function handleAction() {
+            return _this5.deleteStudent(selectedStudent.id);
+          }
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+          isOpen: this.state.openFormModal,
+          toggle: this.toggleFormModal.bind(this),
+          centered: true,
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+            toggle: this.toggleFormModal.bind(this),
+            children: " Update Student"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                "for": "studentName",
+                children: "Student Name"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_11__["default"], {
+                id: "studentName",
+                value: this.state.updateStudentData.studentName,
+                onChange: function onChange(data) {
+                  var newStudentData = _this5.state.updateStudentData;
+                  newStudentData.studentName = data.target.value;
+                  _this5.setState({
+                    newStudentData: newStudentData
+                  });
+                }
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                "for": "pincode",
+                children: "Pincode"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_11__["default"], {
+                id: "pincode",
+                value: this.state.updateStudentData.pincode,
+                onChange: function onChange(data) {
+                  var newStudentData = _this5.state.updateStudentData;
+                  newStudentData.pincode = data.target.value;
+                  _this5.setState({
+                    newStudentData: newStudentData
+                  });
+                }
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                "for": "session",
+                children: "Session"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_11__["default"], {
+                id: "session",
+                value: this.state.updateStudentData.session,
+                onChange: function onChange(data) {
+                  // let{ updateStudentData: newStudentData } = this.state
+                  // newStudentData.studentName = data.target.value
+                  // this.setState({newStudentData})
+                }
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                "for": "department",
+                children: "Department"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_11__["default"], {
+                id: "department",
+                value: this.state.updateStudentData.department,
+                onChange: function onChange(data) {
+                  // let{ updateCourseData: newCourseData } = this.state
+                  // newCourseData.no_of_seats = data.target.value
+                  // this.setState({newCourseData})
+                }
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                "for": "semester",
+                children: "Semester"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_11__["default"], {
+                id: "semester",
+                value: this.state.updateStudentData.semester,
+                onChange: function onChange(data) {
+                  // let{ updateCourseData: newCourseData } = this.state
+                  // newCourseData.no_of_seats = data.target.value
+                  // this.setState({newCourseData})
+                }
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                "for": "cgpa",
+                children: "CGPA"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_11__["default"], {
+                id: "cgpa",
+                value: this.state.updateStudentData.cgpa,
+                onChange: function onChange(data) {
+                  var newStudentData = _this5.state.updateStudentData;
+                  newStudentData.cgpa = data.target.value;
+                  _this5.setState({
+                    newStudentData: newStudentData
+                  });
+                }
+              })]
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_12__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+              color: "primary",
+              onClick: this.updateStudent.bind(this),
+              children: " Update Student"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+              color: "secondary",
+              onClick: this.toggleFormModal.bind(this),
+              children: " Cancel "
+            })]
+          })]
+        })]
+      });
+    }
+  }]);
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+if (document.getElementById('manage-stud-listing-table')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(ManageStudentTable, {}), document.getElementById('manage-stud-listing-table'));
 }
 
 /***/ }),
@@ -5857,16 +6218,16 @@ if (document.getElementById('semester-table')) {
 
 /***/ }),
 
-/***/ "./resources/js/components/Session.js":
-/*!********************************************!*\
-  !*** ./resources/js/components/Session.js ***!
-  \********************************************/
+/***/ "./resources/js/components/SessionTable.js":
+/*!*************************************************!*\
+  !*** ./resources/js/components/SessionTable.js ***!
+  \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Session)
+/* harmony export */   "default": () => (/* binding */ SessionTable)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
@@ -5894,11 +6255,11 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Objec
 
 
 
-var Session = /*#__PURE__*/function (_Component) {
-  function Session() {
+var SessionTable = /*#__PURE__*/function (_Component) {
+  function SessionTable() {
     var _this;
-    _classCallCheck(this, Session);
-    _this = _callSuper(this, Session);
+    _classCallCheck(this, SessionTable);
+    _this = _callSuper(this, SessionTable);
     _this.state = {
       sessions: [],
       openConfirmModal: false,
@@ -5906,8 +6267,8 @@ var Session = /*#__PURE__*/function (_Component) {
     };
     return _this;
   }
-  _inherits(Session, _Component);
-  return _createClass(Session, [{
+  _inherits(SessionTable, _Component);
+  return _createClass(SessionTable, [{
     key: "loadList",
     value: function loadList() {
       var _this2 = this;
@@ -6004,7 +6365,7 @@ var Session = /*#__PURE__*/function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 
 if (document.getElementById('sess-listing-table')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Session, {}), document.getElementById('sess-listing-table'));
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(SessionTable, {}), document.getElementById('sess-listing-table'));
 }
 
 /***/ }),

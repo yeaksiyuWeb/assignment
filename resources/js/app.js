@@ -13,8 +13,9 @@ require('./bootstrap');
  */
 
 require('./components/Example');
-require('./components/Department');
+require('./components/DepartmentTable');
 require('./components/CourseTable');
 require('./components/ConfirmationModal');
 require('./components/SemesterTable');
-require('./components/Session')
+require('./components/SessionTable');
+require('./components/ManageStudentTable')
