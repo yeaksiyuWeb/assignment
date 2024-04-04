@@ -9,7 +9,6 @@ export default class CourseTable extends Component {
         super()
         this.state = {
             coursesData: [],
-            newCourseData: {course_code:"", course_name:"", course_unit:"", no_of_seats:""},
             updateCourseData: {id:"", course_code:"", course_name:"", course_unit:"", no_of_seats:""},
             openConfirmModal: false,
             openFormModal: false,
@@ -56,6 +55,7 @@ export default class CourseTable extends Component {
             this.loadList()
             this.setState({
                 openConfirmModal: false,
+                selectedCourse: null
             })
         })
     }
@@ -63,7 +63,7 @@ export default class CourseTable extends Component {
     toggleConfirmModal(course) {
         this.setState((prevState) => ({
             openConfirmModal: !prevState.openConfirmModal,
-            selectedCourse: course
+            selectedCourse: course ? course : null
         }));
     }
 

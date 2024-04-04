@@ -1,16 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- <body>
-<!-- HEADER END-->
-
-@include('layouts.header') --}}
-
-<!-- LOGO HEADER END-->
-{{-- @if(session('alogin'))
-    @include('layouts.menubar') --}}
-{{-- @endif --}}
-
 <!-- MENU SECTION END-->
 <div class="content-wrapper">
     <div class="container mt-5 mb-5">
@@ -26,17 +16,17 @@
                         Course
                     </div>
                     <div class="card-body">
+                        @if ($errors->any())
+                            <div class="alert alert-danger mt-1">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <form method="post" action="course">
                             @csrf
-                            @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
                             <div class="form-group row mb-2">
                                 <label for="course_code">Course Code</label>
                                 <input type="text" class="form-control" id="course_code" name="course_code" placeholder="Course Code" />
@@ -82,12 +72,4 @@
 @endsection
 
 <script src="/js/app.js"></script>
-{{-- @include('layouts.footer') --}}
 
-<!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
-<!-- CORE JQUERY SCRIPTS -->
-{{-- <script src="{{ asset('assets/js/jquery-1.11.1.js') }}"></script>
-<!-- BOOTSTRAP SCRIPTS -->
-<script src="{{ asset('assets/js/bootstrap.js') }}"></script> --}}
-{{-- </body>
-</html> --}}
