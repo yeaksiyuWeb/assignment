@@ -48,7 +48,7 @@
                 <!--    Bordered Table  -->
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Manage Session
+                        Manage Department
                     </div>
                     <!-- /.panel-heading -->
                     <div class="panel-body">

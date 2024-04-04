@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\SemesterController;
+use App\Http\Controllers\SessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +36,7 @@ Route::delete('/department/{id}',[DepartmentController::class,'delete']);
 // ----------- Semester ----------- //
 Route::get('/semesters', [SemesterController::class, 'getAll']);
 Route::delete('/semester/{id}', [SemesterController::class, 'deleteSemester']);
+
+// ----------- Session ----------- //
+Route::get('/sessions',[SessionController::class,'getAll']);
+Route::delete('/session/{id}',[SessionController::class,'delete']);

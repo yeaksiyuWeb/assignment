@@ -17,3 +17,4 @@ require('./components/Department');
 require('./components/CourseTable');
 require('./components/ConfirmationModal');
 require('./components/SemesterTable');
+require('./components/Session')
