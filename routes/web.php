@@ -56,4 +56,4 @@ Route::post('/student/course-registration',[StudentController::class,'createCour
 Route::get('/student/registration-history',[StudentController::class,'showRegistrationHistory']);
 
 //post
-Route::get('/posts/index',[PostController::class,'display']);
+Route::get('/posts',[PostController::class,'display']);
