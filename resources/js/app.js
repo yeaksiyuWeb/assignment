@@ -13,4 +13,6 @@ require('./bootstrap');
  */
 
 require('./components/Example');
-require('./components/Department');
+require('./components/Department')
+require('./components/CourseTable')
+require('./components/ConfirmationModal')

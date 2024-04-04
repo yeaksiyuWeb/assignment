@@ -8,6 +8,7 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\Student\StudentController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,7 @@ Route::post('/login/student',[LoginController::class,'studentLogin']);
 
 //Admin
 Route::get('/course', [CourseController::class, 'showCoursePage']);
+Route::post('/course', [CourseController::class, 'addCourse']);
 Route::get('/department',[DepartmentController::class,'showDepartmentPage']);
 Route::post('/addDept', [DepartmentController::class, 'save']);
 Route::get('/semester', [SemesterController::class, 'showSemesterPage']);
@@ -45,10 +47,9 @@ Route::get('/session', [SessionController::class, 'showSessionPage']);
 Route::post('/addSession', [SessionController::class, 'save']);
 
 //Student
-Route::get('course-registration',[StudentController::class, 'showCourseRegistrationForm']);
-Route::post('course-registration',[StudentController::class,'createCourseRegistration']);
+Route::get('/student/course-registration',[StudentController::class, 'showCourseRegistrationForm']);
+Route::post('/student/course-registration',[StudentController::class,'createCourseRegistration']);
+Route::get('/student/registration-history',[StudentController::class,'showRegistrationHistory']);
 
-
-
-// Route::view('testerror','testerror');
-
+//post
+Route::get('/posts/index',[PostController::class,'display']);

@@ -36,7 +36,7 @@
         {{-- @if(Auth->check())
             @include('layouts.studentMenubar')
         @endif --}}
-    @elseif(session('adminName'))
+    @elseif(session('adminName') || true)
         @include('layouts.adminHeader')
         @include('layouts.adminMenubar')
         {{-- @if(Auth->check())
@@ -52,7 +52,7 @@
 
     @if(session('studName'))
         @include('layouts.studentFooter')
-    @elseif(session('adminName'))
+    @elseif(session('adminName') || true)
         @include('layouts.adminFooter')
     @endif
 </body>

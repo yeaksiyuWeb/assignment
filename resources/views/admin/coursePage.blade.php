@@ -19,32 +19,42 @@
                 <h1 class="page-head-line-admin">Course</h1>
             </div>
         </div>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mb-5">
             <div class="col-md-6">
                 <div class="card bottom-10">
                     <div class="card-header">
                         Course
                     </div>
                     <div class="card-body">
-                        <form name="dept" method="post">
+                        <form method="post" action="course">
+                            @csrf
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             <div class="form-group row mb-2">
-                                <label for="coursecode">Course Code</label>
-                                <input type="text" class="form-control" id="coursecode" name="coursecode" placeholder="Course Code" required />
+                                <label for="course_code">Course Code</label>
+                                <input type="text" class="form-control" id="course_code" name="course_code" placeholder="Course Code" />
                             </div>
 
                             <div class="form-group row mb-2">
-                                <label for="coursename">Course Name</label>
-                                <input type="text" class="form-control" id="coursename" name="coursename" placeholder="Course Name" required />
+                                <label for="course_name">Course Name</label>
+                                <input type="text" class="form-control" id="course_name" name="course_name" placeholder="Course Name" />
                             </div>
 
                             <div class="form-group row mb-2">
-                                <label for="courseunit">Course unit</label>
-                                <input type="text" class="form-control" id="courseunit" name="courseunit" placeholder="Course Unit" required />
+                                <label for="course_unit">Course unit</label>
+                                <input type="text" class="form-control" id="course_unit" name="course_unit" placeholder="Course Unit" />
                             </div>
 
                             <div class="form-group row mb-2">
-                                <label for="seatlimit">Seat limit</label>
-                                <input type="text" class="form-control" id="seatlimit" name="seatlimit" placeholder="Seat limit" required />
+                                <label for="no_of_seats">Seat limit</label>
+                                <input type="text" class="form-control" id="no_of_seats" name="no_of_seats" placeholder="Seat limit" />
                             </div>
 
                             <button type="submit" name="submit" class="btn btn-primary">Submit</button>
@@ -63,43 +73,15 @@
                     Manage Course
                 </div>
                 <div class="card-body">
-                    <div class="table-responsive table-bordered">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Course Code</th>
-                                    <th>Course Name</th>
-                                    <th>Course Unit</th>
-                                    <th>Seat limit</th>
-                                    <th>Creation Date</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {{-- @foreach($courses as $course)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $course->courseCode }}</td>
-                                        <td>{{ $course->courseName }}</td>
-                                        <td>{{ $course->courseUnit }}</td>
-                                        <td>{{ $course->noofSeats }}</td>
-                                        <td>{{ $course->creationDate }}</td>
-                                        <td>
-                                            <a href="{{ route('edit-course', $course->id) }}"><button class="btn btn-primary"><i class="fa fa-edit"></i> Edit</button></a>
-                                            <a href="{{ route('delete-course', $course->id) }}" onclick="return confirm('Are you sure you want to delete?')"><button class="btn btn-danger">Delete</button></a>
-                                        </td>
-                                    </tr>
-                                @endforeach --}}
-                            </tbody>
-                        </table>
-                    </div>
+                    <div id="course-table"></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
+
+<script src="/js/app.js"></script>
 {{-- @include('layouts.footer') --}}
 
 <!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->

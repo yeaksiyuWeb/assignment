@@ -2,14 +2,12 @@
 
 @section('content')
 <div class="container">
-  <div class="row justify-content-center align-items-center">
-    <div class="col-md-8">
-      <div class="card">
-        @if($url == 'admin')
-        <div class="card-header text-white" style="background-color: #C36464"> {{ isset($url) ? ucwords($url) : ""}} {{ __('Login') }}</div>
-        @elseif($url == 'student')
-        <div class="card-header text-white" style="background-color: #1c1847"> {{ isset($url) ? ucwords($url) : ""}} {{ __('Login') }}</div>
-        @endif
+  <div class="row justify-content-center align-items-center" >
+    <div class="col-md-6">
+      <div class="card" >
+        
+        <div class="card-header" > {{ isset($url) ? ucwords($url) : ""}} {{ __('Login') }}</div>
+       
           <div class="card-body">
           <form method="POST" action='{{ url("login/$url") }}'>
           @csrf
