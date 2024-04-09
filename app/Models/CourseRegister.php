@@ -25,4 +25,9 @@ class CourseRegister extends Model
     {
         return null;
     }
+
+    public function joinStudentTable()
+    {
+        return $this->belongsTo(Student::class, 'regNo', 'regNo');
+    }
 }

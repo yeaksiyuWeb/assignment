@@ -6,28 +6,25 @@
             <ul class="navbar-nav ms-auto">
 
                 <li class="nav-item">
-                    <a class="nav-link text-white text-uppercase" href="session.php">Session</a>
+                    <a class="nav-link text-white text-uppercase" href="/admin/session">Session</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white text-uppercase" href="semester.php">Semester </a>
+                    <a class="nav-link text-white text-uppercase" href="/admin/semester">Semester </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white text-uppercase" href="department.php">Department</a>
+                    <a class="nav-link text-white text-uppercase" href="/admin/department">Department</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white text-uppercase" href="course.php">Course</a>
+                    <a class="nav-link text-white text-uppercase" href="/admin/course">Course</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white text-uppercase" href="student-registration.php">Registration</a>
+                    <a class="nav-link text-white text-uppercase" href="/admin/student-registration">Registration</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white text-uppercase" href="manage-students.php">Manage Students</a>
+                    <a class="nav-link text-white text-uppercase" href="/admin/manageStudent">Manage Students</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white text-uppercase" href="enroll-history.php">Enroll History</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white text-uppercase" href="user-log.php">Student Logs </a>
+                    <a class="nav-link text-white text-uppercase" href="/admin/registration-history">Enroll History</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white text-uppercase" href="logout.php">Logout</a>

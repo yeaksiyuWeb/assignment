@@ -1,27 +1,22 @@
 @extends('layouts.app')
 
-<!-- @if(session('alogin'))
- @include('layouts.menubar')
-@endif -->
 @section('content')
 
 <!-- MENU SECTION END-->
 <div class="content-wrapper">
-    <div class="container">
+    <div class="container mt-5 mb-5">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="page-head-line">Department  </h1>
+                <h1 class="page-head-line-admin">Department  </h1>
             </div>
         </div>
-        <div class="row" >
-            <div class="col-md-3"></div>
+        <div class="row justify-content-center mb-5" >
                 <div class="col-md-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
+                    <div class="card bottom-10">
+                        <div class="card-header">
                             Department 
                         </div>
-<!-- <font color="green" align="center"><?php //echo htmlentities($_SESSION['msg']);?><?php //echo htmlentities($_SESSION['msg']="");?></font> -->
-                        <div class="panel-body">
+                        <div class="card-body">
                             <form action="/addDept" name="dept" method="post">
                                 @csrf
                                 @if ($errors->any())
@@ -33,28 +28,25 @@
                                         </ul>
                                     </div>
                                 @endif
-                                <div class="form-group">
+                                <div class="form-group row mb-2">
                                     <label for="department">Add Department  </label>
                                     <input type="text" class="form-control" id="department" name="department" placeholder="department"/>
                                 </div>
-                                <button type="submit" name="submit" class="btn btn-default">Submit</button>
+                                <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- <font color="red" align="center"><?php //echo htmlentities($_SESSION['delmsg']);?><?php //echo htmlentities($_SESSION['delmsg']="");?></font> -->
             <div class="col-md-12">
                 <!--    Bordered Table  -->
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+                <div class="card">
+                    <div class="card-heading">
                         Manage Department
                     </div>
                     <!-- /.panel-heading -->
-                    <div class="panel-body">
-                        <div id="dept-listing-table">
-
-                        </div>
+                    <div class="card-body">
+                        <div id="dept-listing-table"></div>
                     </div>
                 </div>
                     <!--  End  Bordered Table  -->
@@ -63,14 +55,7 @@
     </div>
 </div>
 @endsection
-    <!-- CONTENT-WRAPPER SECTION END-->
 
-    <!-- FOOTER SECTION END-->
-    <!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
-    <!-- CORE JQUERY SCRIPTS -->
-    <!-- <script src="assets/js/jquery-1.11.1.js"></script> -->
-    <!-- BOOTSTRAP SCRIPTS  -->
-    <!-- <script src="assets/js/bootstrap.js"></script> -->
 <script src="/js/app.js"></script>
 
 

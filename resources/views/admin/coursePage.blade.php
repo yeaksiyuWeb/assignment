@@ -53,11 +53,8 @@
                 </div>
             </div>
         </div>
-        @if(session('msg'))
-            <font color="green" align="center">{{ session('msg') }}</font>
-        @endif
-        <font color="red" align="center">{{ session('delmsg') }}</font>
         <div class="col-md-12">
+            <!--    Bordered Table  -->
             <div class="card">
                 <div class="card-header">
                     Manage Course
