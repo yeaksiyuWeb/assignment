@@ -5,6 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Session;
+use App\Models\Department;
+use App\Models\Semester;
+
 
 class Student extends Model
 {
@@ -16,9 +20,6 @@ class Student extends Model
         'password',
         'studentName',
         'pincode',
-        'session',
-        'department',
-        'semester',
         'cgpa'
     ];
 
@@ -31,5 +32,15 @@ class Student extends Model
         $this->attributes['password'] = Hash::make($value);
     }
 
+    public function getSession(){
+        return $this->belongsTo(Session::class);
+    }
 
+    public function getDepartment(){
+        return $this->belongsTo(Department::class);
+    }
+
+    public function getSemester(){
+        return $this->belongsTo(Semester::class);
+    }
 }

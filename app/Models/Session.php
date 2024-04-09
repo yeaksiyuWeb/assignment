@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Student;
 
 class Session extends Model
 {
@@ -12,4 +13,8 @@ class Session extends Model
     protected $fillable =[
         'session',
     ];
+
+    public function getStudents(){
+        return $this->hasMany(Student::class);
+    }
 }

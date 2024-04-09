@@ -20,9 +20,9 @@ class StudentSeeder extends Seeder
             'password'=> bcrypt('Test@123'),
             'studentName'=>'Ooi Chi Zhe',
             'pincode'=>'200100',
-            'session'=> '',
-            'department'=>'',
-            'semester'=>'',
+            'session_id'=> '',
+            'department_id'=>'',
+            'semester_id'=>'',
             'cgpa'=>'4.0',
         ]);
 
@@ -32,9 +32,9 @@ class StudentSeeder extends Seeder
             'password'=> bcrypt('Test@123'),
             'studentName'=>'Koh Wei Zhe',
             'pincode'=>'200101',
-            'session'=> '',
-            'department'=>'',
-            'semester'=>'',
+            'session_id'=> '',
+            'department_id'=>'',
+            'semester_id'=>'',
             'cgpa'=>'4.0',
         ]);
 
@@ -44,9 +44,9 @@ class StudentSeeder extends Seeder
             'password'=> bcrypt('Test@123'),
             'studentName'=>'Yeak Si Yu',
             'pincode'=>'200103',
-            'session'=> '',
-            'department'=>'',
-            'semester'=>'',
+            'session_id'=> '',
+            'department_id'=>'',
+            'semester_id'=>'',
             'cgpa'=>'4.0',
         ]);
 
@@ -56,9 +56,9 @@ class StudentSeeder extends Seeder
             'password'=> bcrypt('Test@123'),
             'studentName'=>'Agnes Tan Sze Wei',
             'pincode'=>'200104',
-            'session'=> '',
-            'department'=>'',
-            'semester'=>'',
+            'session_id'=> '',
+            'department_id'=>'',
+            'semester_id'=>'',
             'cgpa'=>'4.0',
         ]);
 

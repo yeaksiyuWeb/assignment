@@ -33,6 +33,7 @@ Route::delete('/course/{id}',[CourseController::class, 'deleteCourse']);
 // ----------- Department ----------- //
 Route::get('/departments',[DepartmentController::class,'getAll']);
 Route::delete('/department/{id}',[DepartmentController::class,'delete']);
+Route::get('/departmentStud/{id}', [DepartmentController::class, 'getStudents']);
 
 // ----------- Semester ----------- //
 Route::get('/semesters', [SemesterController::class, 'getAll']);

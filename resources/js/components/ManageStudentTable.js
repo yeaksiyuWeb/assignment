@@ -104,14 +104,6 @@ export default class ManageStudentTable extends Component {
         }));
     }
 
-    resetPassword(){
-
-    }
-
-    togglePasswordModal(){
-
-    }
-
     render(){
         const {selectedStudent} = this.state;
 

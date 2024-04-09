@@ -5876,12 +5876,6 @@ var ManageStudentTable = /*#__PURE__*/function (_Component) {
       });
     }
   }, {
-    key: "resetPassword",
-    value: function resetPassword() {}
-  }, {
-    key: "togglePasswordModal",
-    value: function togglePasswordModal() {}
-  }, {
     key: "render",
     value: function render() {
       var _this5 = this;

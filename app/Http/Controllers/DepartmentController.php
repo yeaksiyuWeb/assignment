@@ -16,6 +16,10 @@ class DepartmentController extends Controller
         return view('admin/department');
     }
 
+    public function getStudents($id){
+        return Department::find($id)->getStudents()->get();
+    }
+
     public function getAll() {
         return Department::all();
     }
