@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\CourseRegistrationHistory;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\SessionController;
@@ -51,6 +52,7 @@ Route::post('/addSession', [SessionController::class, 'save']);
 Route::get('/student-registration', [RegisterStudController::class, 'showRegisterStudentPage']);
 Route::post('/addStudent', [RegisterStudController::class, 'addStudent']);
 Route::get('/manageStudent', [ManageStudentController::class, 'showManageStudent']);
+Route::get('/registration-history', [CourseRegistrationHistory::class, 'getJoinedTable']);
 
 //Student
 Route::get('/student/course-registration',[StudentController::class, 'showCourseRegistrationForm']);
