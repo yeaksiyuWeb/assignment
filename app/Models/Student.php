@@ -16,7 +16,6 @@ class Student extends Model
 
     protected $fillable = [
         'regNo',
-        'studentPhoto',
         'password',
         'studentName',
         'pincode',
