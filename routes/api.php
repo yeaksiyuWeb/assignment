@@ -47,6 +47,3 @@ Route::delete('/session/{id}',[SessionController::class,'delete']);
 Route::get('/students', [ManageStudentController::class, 'getAll']);
 Route::put('/student/{id}',[ManageStudentController::class, 'update']);
 Route::delete('/student/{id}',[ManageStudentController::class,'delete']);
-
-// ----------- Registration History ----------- //
-Route::get('/registration-history', [StudentController::class, 'getAll']);

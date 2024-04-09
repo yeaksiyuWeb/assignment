@@ -28,6 +28,6 @@ class CourseRegister extends Model
 
     public function joinStudentTable()
     {
-        return $this->belongsTo(Student::class, 'regNo');
+        return $this->belongsTo(Student::class, 'regNo', 'regNo');
     }
 }

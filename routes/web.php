@@ -41,18 +41,19 @@ Route::post('/login/student',[LoginController::class,'studentLogin']);
 
 
 //Admin
-Route::get('/course', [CourseController::class, 'showCoursePage']);
+Route::get('/admin/course', [CourseController::class, 'showCoursePage']);
 Route::post('/course', [CourseController::class, 'addCourse']);
-Route::get('/department',[DepartmentController::class,'showDepartmentPage']);
+Route::get('/admin/department',[DepartmentController::class,'showDepartmentPage']);
 Route::post('/addDept', [DepartmentController::class, 'save']);
-Route::get('/semester', [SemesterController::class, 'showSemesterPage']);
+Route::get('/admin/semester', [SemesterController::class, 'showSemesterPage']);
 Route::post('/semester', [SemesterController::class, 'addSemester']);
-Route::get('/session', [SessionController::class, 'showSessionPage']);
+Route::get('/admin/session', [SessionController::class, 'showSessionPage']);
 Route::post('/addSession', [SessionController::class, 'save']);
-Route::get('/student-registration', [RegisterStudController::class, 'showRegisterStudentPage']);
+Route::get('/admin/student-registration', [RegisterStudController::class, 'showRegisterStudentPage']);
 Route::post('/addStudent', [RegisterStudController::class, 'addStudent']);
-Route::get('/manageStudent', [ManageStudentController::class, 'showManageStudent']);
-Route::get('/registration-history', [CourseRegistrationHistory::class, 'getJoinedTable']);
+Route::get('/admin/manageStudent', [ManageStudentController::class, 'showManageStudent']);
+Route::get('/admin/registration-history', [CourseRegistrationHistory::class, 'getAll']);
+
 
 //Student
 Route::get('/student/course-registration',[StudentController::class, 'showCourseRegistrationForm']);
