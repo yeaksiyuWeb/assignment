@@ -27,7 +27,7 @@
                     <a class="nav-link text-white text-uppercase" href="/admin/registration-history">Enroll History</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white text-uppercase" href="logout.php">Logout</a>
+                    <a class="nav-link text-white text-uppercase" href="/logout">Logout</a>
                 </li>
 
             </ul>

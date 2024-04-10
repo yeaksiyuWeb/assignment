@@ -28,7 +28,7 @@ use App\Http\Controllers\ManageStudentController;
 //     return view('welcome');
 // });
 
-// Auth::routes();
+Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -39,26 +39,51 @@ Route::get('/login/student',[LoginController::class,'showStudentLoginForm']);
 Route::post('/login/admin',[LoginController::class,'adminLogin']);
 Route::post('/login/student',[LoginController::class,'studentLogin']);
 
+Route::get('logout',[LoginController::class,'logout']);
+
+
+Route::group(['middleware' => 'auth:admin'], function () { 
+  Route::get('/admin/course', [CourseController::class, 'showCoursePage']);
+  Route::post('/course', [CourseController::class, 'addCourse']);
+  Route::get('/admin/department',[DepartmentController::class,'showDepartmentPage']);
+  Route::post('/addDept', [DepartmentController::class, 'save']);
+  Route::get('/admin/semester', [SemesterController::class, 'showSemesterPage']);
+  Route::post('/semester', [SemesterController::class, 'addSemester']);
+  Route::get('/admin/session', [SessionController::class, 'showSessionPage']);
+  Route::post('/addSession', [SessionController::class, 'save']);
+  Route::get('/admin/student-registration', [RegisterStudController::class, 'showRegisterStudentPage']);
+  Route::post('/addStudent', [RegisterStudController::class, 'addStudent']);
+  Route::get('/admin/manageStudent', [ManageStudentController::class, 'showManageStudent']);
+  Route::get('/admin/registration-history', [CourseRegistrationHistory::class, 'getAll']);
+});
+
+Route::group(['middleware' => 'auth:student'], function () {
+  Route::get('/student/course-registration',[StudentController::class, 'showCourseRegistrationForm']);
+  Route::post('/student/course-registration',[StudentController::class,'createCourseRegistration']);
+  Route::get('/student/registration-history',[StudentController::class,'showRegistrationHistory']);
+});
+
 
 //Admin
-Route::get('/admin/course', [CourseController::class, 'showCoursePage']);
-Route::post('/course', [CourseController::class, 'addCourse']);
-Route::get('/admin/department',[DepartmentController::class,'showDepartmentPage']);
-Route::post('/addDept', [DepartmentController::class, 'save']);
-Route::get('/admin/semester', [SemesterController::class, 'showSemesterPage']);
-Route::post('/semester', [SemesterController::class, 'addSemester']);
-Route::get('/admin/session', [SessionController::class, 'showSessionPage']);
-Route::post('/addSession', [SessionController::class, 'save']);
-Route::get('/admin/student-registration', [RegisterStudController::class, 'showRegisterStudentPage']);
-Route::post('/addStudent', [RegisterStudController::class, 'addStudent']);
-Route::get('/admin/manageStudent', [ManageStudentController::class, 'showManageStudent']);
-Route::get('/admin/registration-history', [CourseRegistrationHistory::class, 'getAll']);
+// Route::get('/admin/course', [CourseController::class, 'showCoursePage']);
+// Route::post('/course', [CourseController::class, 'addCourse']);
+// Route::get('/admin/department',[DepartmentController::class,'showDepartmentPage']);
+// Route::post('/addDept', [DepartmentController::class, 'save']);
+// Route::get('/admin/semester', [SemesterController::class, 'showSemesterPage']);
+// Route::post('/semester', [SemesterController::class, 'addSemester']);
+// Route::get('/admin/session', [SessionController::class, 'showSessionPage']);
+// Route::post('/addSession', [SessionController::class, 'save']);
+// Route::get('/admin/student-registration', [RegisterStudController::class, 'showRegisterStudentPage']);
+// Route::post('/addStudent', [RegisterStudController::class, 'addStudent']);
+// Route::get('/admin/manageStudent', [ManageStudentController::class, 'showManageStudent']);
+// Route::get('/admin/registration-history', [CourseRegistrationHistory::class, 'getAll']);
 
 
 //Student
-Route::get('/student/course-registration',[StudentController::class, 'showCourseRegistrationForm']);
-Route::post('/student/course-registration',[StudentController::class,'createCourseRegistration']);
-Route::get('/student/registration-history',[StudentController::class,'showRegistrationHistory']);
+// Route::get('/student/course-registration',[StudentController::class, 'showCourseRegistrationForm']);
+// Route::post('/student/course-registration',[StudentController::class,'createCourseRegistration']);
+// Route::get('/student/registration-history',[StudentController::class,'showRegistrationHistory']);
 
 //post
 Route::get('/posts',[PostController::class,'display']);
+Route::post('/posts',[PostController::class,'createFeed'])->name('posts.store');
