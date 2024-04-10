@@ -3,15 +3,15 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\CourseController;
-use App\Http\Controllers\CourseRegistrationHistory;
-use App\Http\Controllers\DepartmentController;
-use App\Http\Controllers\SemesterController;
-use App\Http\Controllers\SessionController;
+use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\CourseRegistrationHistory;
+use App\Http\Controllers\Admin\DepartmentController;
+use App\Http\Controllers\Admin\SemesterController;
+use App\Http\Controllers\Admin\SessionController;
 use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\RegisterStudController;
-use App\Http\Controllers\ManageStudentController;
+use App\Http\Controllers\Admin\RegisterStudController;
+use App\Http\Controllers\Admin\ManageStudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,11 +31,13 @@ use App\Http\Controllers\ManageStudentController;
 Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::get('/', function () {
+  return redirect()->route('login.student');
+});
 
 //Login for Admin and Student
-Route::get('/login/admin',[LoginController::class,'showAdminLoginForm']);
-Route::get('/login/student',[LoginController::class,'showStudentLoginForm']);
+Route::get('/login/admin',[LoginController::class,'showAdminLoginForm'])->name('login.admin');
+Route::get('/login/student',[LoginController::class,'showStudentLoginForm'])->name('login.student');
 Route::post('/login/admin',[LoginController::class,'adminLogin']);
 Route::post('/login/student',[LoginController::class,'studentLogin']);
 

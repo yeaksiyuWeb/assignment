@@ -4,11 +4,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Student\CourseRegisterController;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\CourseController;
-use App\Http\Controllers\DepartmentController;
-use App\Http\Controllers\SemesterController;
-use App\Http\Controllers\SessionController;
-use App\Http\Controllers\ManageStudentController;
+use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\DepartmentController;
+use App\Http\Controllers\Admin\SemesterController;
+use App\Http\Controllers\Admin\SessionController;
+use App\Http\Controllers\Admin\ManageStudentController;
 use App\Http\Controllers\Student\StudentController;
 
 /*

@@ -26,23 +26,22 @@
     <link href="{{ asset('css/customCSS.css') }}" rel="stylesheet">
 </head>
 <body>
-    <!--Will need to change later to handle auth tokens-->
-    @if(session('studName'))
+    @if(Route::currentRouteName() == 'login.student')
+        @include('layouts.studentHeader')
+    @elseif(Route::currentRouteName() == 'login.admin')
+        @include('layouts.adminHeader')
+    @endif
+    @if(Auth::guard('student')->check())
         <!-- Student layout -->
         @include('layouts.welcomeheader')
         @include('layouts.studentHeader')
         <!-- LOGO HEADER END-->
         @include('layouts.studentMenubar')
-        {{-- @if(Auth->check())
-            @include('layouts.studentMenubar')
-        @endif --}}
-    @elseif(session('adminName') || true)
+    @elseif(Auth::guard('admin')->check())
         @include('layouts.adminHeader')
         @include('layouts.adminMenubar')
-        {{-- @if(Auth->check())
-            @include('layouts.adminMenubar')
-        @endif --}}
     @endif
+
     <!-- MENU SECTION END-->
     <div id="app">
         <main class="py-4">
@@ -50,9 +49,9 @@
         </main>
     </div>
 
-    @if(session('studName'))
+    @if(Auth::guard('student')->check() || Route::currentRouteName() == 'login.student')
         @include('layouts.studentFooter')
-    @elseif(session('adminName') || true)
+    @elseif(Auth::guard('admin')->check() || Route::currentRouteName() == 'login.admin')
         @include('layouts.adminFooter')
     @endif
 </body>

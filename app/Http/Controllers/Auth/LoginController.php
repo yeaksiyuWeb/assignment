@@ -79,10 +79,11 @@ class LoginController extends Controller
         $request->session()->invalidate();
         
         if ($role === 'admin') {
-            return $this->showAdminLoginForm(); 
+            return redirect()->route('login.admin')->with('status', 'You have been logged out');
         } elseif ($role === 'student') {
-            return $this->showStudentLoginForm(); 
+            return redirect()->route('login.student')->with('status', 'You have been logged out');
         }
+    
     }
 
     
