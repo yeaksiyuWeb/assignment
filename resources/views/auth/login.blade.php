@@ -10,6 +10,11 @@
        
           <div class="card-body">
           <form method="POST" action='{{ url("login/$url") }}'>
+            @if (session('status'))
+              <div id="status-popup" class="alert alert-success">
+                  {{ session('status') }}
+              </div>
+            @endif
           @csrf
           @if ($errors->any())
               <div class="alert alert-danger">
@@ -87,4 +92,33 @@
     </div>
   </div>
 </div>
+
 @endsection
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var statusPopup = document.getElementById('status-popup');
+    
+    if (statusPopup) {
+      // Show the pop-up
+      statusPopup.style.opacity = '1';
+
+      // Set a timer to fade out the pop-up after 3 seconds
+      setTimeout(function() {
+        fadeOut(statusPopup);
+      }, 2000);
+    }
+  });
+
+  function fadeOut(element) {
+    var opacity = 1;
+    var interval = setInterval(function() {
+      if (opacity <= 0.1) {
+        clearInterval(interval);
+        element.style.display = 'none';
+      }
+      element.style.opacity = opacity;
+      opacity -= opacity * 0.1;
+    }, 100);
+  }
+</script>
