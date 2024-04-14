@@ -33,11 +33,12 @@
     @endif
     @if(Auth::guard('student')->check())
         <!-- Student layout -->
-        @include('layouts.welcomeheader')
+        @include('layouts.studentWelcomeheader')
         @include('layouts.studentHeader')
         <!-- LOGO HEADER END-->
         @include('layouts.studentMenubar')
     @elseif(Auth::guard('admin')->check())
+        @include('layouts.adminWelcomeheader')
         @include('layouts.adminHeader')
         @include('layouts.adminMenubar')
     @endif

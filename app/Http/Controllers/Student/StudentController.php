@@ -23,12 +23,6 @@ class StudentController extends Controller
         $sems = Semester::pluck('semester');
         $courses = Course::pluck('course_name');
 
-        $request->session()->put([
-            'studName'=>'Ooi Chi Zhe',
-            'regNo'=>'10806121',
-            'pincode'=>'822894'
-        ]);
-
         return view('student.courseRegistration', ['sess'=>$sess, 
         'departments'=>$departments, 'levels'=>$levels, 'sems'=>$sems, 'courses'=>$courses]);
     }
@@ -60,14 +54,9 @@ class StudentController extends Controller
     }
 
     public function showRegistrationHistory(Request $request){
-        $request->session()->put([
-            'studName'=>'Ooi Chi Zhe',
-            'regNo'=>'10806121',
-            'pincode'=>'822894'
-        ]);
+       
         $reg_list = CourseRegister::all();
         
-
         return view('student.registrationHistory',['reg_list'=>$reg_list]);
     }
 

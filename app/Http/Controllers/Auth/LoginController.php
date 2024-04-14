@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use App\Models\Student;
 use Auth;
 
 class LoginController extends Controller
@@ -32,6 +33,12 @@ class LoginController extends Controller
         ]);
 
         if (Auth::guard('admin')->attempt(['username' => $request->username, 'password' => $request->password])) {
+            
+            $request->session()->put([
+                'username'=> $request->username,
+                'role'=>'admin',
+            ]);
+            
             return redirect()->intended('/admin/course');
         }
 
@@ -55,9 +62,19 @@ class LoginController extends Controller
         ]);
 
         if (Auth::guard('student')->attempt(['regNo' => $request->regNo, 'password' => $request->password])) {
+            
+            $loginStudent = Student::where('regNo', $request->regNo)->first();
+            $request->session()->put([
+                'studName'=> $loginStudent->studentName,
+                'regNo'=> $request->regNo,
+                'pincode'=> $loginStudent->pincode,
+                'role'=>'student',
+            ]);
+    
             return redirect()->intended('/student/course-registration');
         }
 
+        
         return back()->withInput($request->only('regNo'));
     }
 
