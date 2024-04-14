@@ -8,7 +8,8 @@
     <li class="nav-item"><a class="nav-link text-white text-uppercase" href="/student/course-registration">Register for Course</a></li>
     <li class="nav-item"><a class="nav-link text-white text-uppercase" href="/student/registration-history">Registration History</a></li>
     <li class="nav-item"><a class="nav-link text-white text-uppercase" href="#">My Profile</a></li>
-    <li class="nav-item"><a class="nav-link text-white text-uppercase" href="posts">Change Password</a></li>
+    <li class="nav-item"><a class="nav-link text-white text-uppercase" href="#">Change Password</a></li>
+    <li class="nav-item"><a class="nav-link text-white text-uppercase" href="/student/posts">Course Feeds</a></li>
     <li class="nav-item"><a class="nav-link text-white text-uppercase" href="/logout">Logout</a></li>
 
     </ul>

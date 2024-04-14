@@ -4,19 +4,14 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use App\Policies\PostPolicy; 
+use App\Post; 
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
-    }
-
+    protected $policies = [ 
+        Post::class => PostPolicy::class, 
+    ]; 
     /**
      * Bootstrap any application services.
      *

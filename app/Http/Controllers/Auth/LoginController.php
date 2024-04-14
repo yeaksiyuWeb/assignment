@@ -64,13 +64,13 @@ class LoginController extends Controller
         if (Auth::guard('student')->attempt(['regNo' => $request->regNo, 'password' => $request->password])) {
             
             $loginStudent = Student::where('regNo', $request->regNo)->first();
+            
             $request->session()->put([
                 'studName'=> $loginStudent->studentName,
                 'regNo'=> $request->regNo,
                 'pincode'=> $loginStudent->pincode,
                 'role'=>'student',
             ]);
-    
             return redirect()->intended('/student/course-registration');
         }
 

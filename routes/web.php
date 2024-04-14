@@ -57,12 +57,21 @@ Route::group(['middleware' => 'auth:admin'], function () {
   Route::post('/addStudent', [RegisterStudController::class, 'addStudent']);
   Route::get('/admin/manageStudent', [ManageStudentController::class, 'showManageStudent']);
   Route::get('/admin/registration-history', [CourseRegistrationHistory::class, 'getAll']);
+  Route::get('/admin/posts',[PostController::class,'index'])->name('posts.admin.display');
+  Route::post('/admin/posts',[PostController::class,'create'])->name('posts.admin.store');
+  Route::put('/admin/posts/{id}',[PostController::class,'update'])->name('posts.admin.update');
+  Route::delete('/admin/posts/{id}', [PostController::class, 'destroy'])->name('posts.admin.destroy');
 });
 
 Route::group(['middleware' => 'auth:student'], function () {
   Route::get('/student/course-registration',[StudentController::class, 'showCourseRegistrationForm']);
   Route::post('/student/course-registration',[StudentController::class,'createCourseRegistration']);
   Route::get('/student/registration-history',[StudentController::class,'showRegistrationHistory']);
+  Route::get('/student/posts',[PostController::class,'index'])->name('posts.student.display');
+  Route::post('/student/posts',[PostController::class,'create'])->name('posts.student.store');
+  Route::put('/student/posts/{id}',[PostController::class,'update'])->name('posts.student.update');
+  Route::delete('/student/posts/{id}', [PostController::class, 'destroy'])->name('posts.student.destroy');
+
 });
 
 
@@ -87,5 +96,7 @@ Route::group(['middleware' => 'auth:student'], function () {
 // Route::get('/student/registration-history',[StudentController::class,'showRegistrationHistory']);
 
 //post
-Route::get('/posts',[PostController::class,'display']);
-Route::post('/posts',[PostController::class,'createFeed'])->name('posts.store');
+// Route::get('/posts',[PostController::class,'index'])->name('posts.display');
+// Route::post('/posts',[PostController::class,'create'])->name('posts.store');
+// Route::put('/posts/{id}',[PostController::class,'update'])->name('posts.update');
+// Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
