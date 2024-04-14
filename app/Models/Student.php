@@ -30,10 +30,6 @@ class Student extends Authenticatable
         'password',
     ];
 
-    public function setPasswordAttribute($value)
-    {
-        $this->attributes['password'] = Hash::make($value);
-    }
 
     public function getSession(){
         return $this->belongsTo(Session::class);
