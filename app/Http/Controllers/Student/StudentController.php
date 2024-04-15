@@ -43,7 +43,6 @@ class StudentController extends Controller
             'level' => 'required',
             'semester' => 'required',
             'course' => 'required',
-            // 'test' => 'required | min:3',
         ]);
         CourseRegister::create($request->all());
 
@@ -58,6 +57,28 @@ class StudentController extends Controller
         $reg_list = CourseRegister::all();
         
         return view('student.registrationHistory',['reg_list'=>$reg_list]);
+    }
+    
+
+    public function showProfilePage(Request $request){
+        $regNo = $request->session()->get('regNo');
+        $student = Student::where('regNo', $regNo)->first();
+        return view('student.studentProfile',['student'=> $student]);
+    }
+
+    public function editProfilePage(Request $request, $regNo){
+        
+        $request->validate([
+            'pincode' => 'required',
+            'cgpa' => 'required',
+        ]);
+        $student = Student::where('regNo', $regNo)->first();
+        $student->pincode = $request->pincode;
+        $student->cgpa = $request->cgpa;
+        $student->save();
+
+        $request->session()->flash('status', 'Profile changed successfully');
+        return redirect()->route('student.studentProfile.display');
     }
 
 }

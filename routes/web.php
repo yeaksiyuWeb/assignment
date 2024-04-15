@@ -67,6 +67,8 @@ Route::group(['middleware' => 'auth:student'], function () {
   Route::get('/student/course-registration',[StudentController::class, 'showCourseRegistrationForm']);
   Route::post('/student/course-registration',[StudentController::class,'createCourseRegistration']);
   Route::get('/student/registration-history',[StudentController::class,'showRegistrationHistory']);
+  Route::get('/student/profile',[StudentController::class,'showProfilePage'])->name('student.studentProfile.display');
+  Route::put('/student/profile/{regNo}',[StudentController::class,'editProfilePage'])->name('student.studentProfile.update');
   Route::get('/student/posts',[PostController::class,'index'])->name('posts.student.display');
   Route::post('/student/posts',[PostController::class,'create'])->name('posts.student.store');
   Route::put('/student/posts/{id}',[PostController::class,'update'])->name('posts.student.update');

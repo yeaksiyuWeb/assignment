@@ -26,7 +26,7 @@
                         </div>
                     @endif
                     @if(session('status'))
-                    <div class="alert alert-success"><p>{{session('status')}}</p></div>
+                    <div class="alert alert-success" id="status-popup"><p>{{session('status')}}</p></div>
                     @endif
                     <div class="form-group row mb-2">
                         <label for="studentName" class="col-md-4 col-form-label "><b>Student Name</b></label>
@@ -123,4 +123,31 @@
     </div>
 </div>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var statusPopup = document.getElementById('status-popup');
+    
+    if (statusPopup) {
+      // Show the pop-up
+      statusPopup.style.opacity = '1';
+
+      // Set a timer to fade out the pop-up after 3 seconds
+      setTimeout(function() {
+        fadeOut(statusPopup);
+      }, 2000);
+    }
+  });
+
+  function fadeOut(element) {
+    var opacity = 1;
+    var interval = setInterval(function() {
+      if (opacity <= 0.1) {
+        clearInterval(interval);
+        element.style.display = 'none';
+      }
+      element.style.opacity = opacity;
+      opacity -= opacity * 0.1;
+    }, 100);
+  }
+</script>
 @endsection
