@@ -24,13 +24,10 @@ use App\Http\Controllers\Admin\ManageStudentController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+
 
 Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', function () {
   return redirect()->route('login.student');
 });

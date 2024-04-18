@@ -23,7 +23,7 @@ class PostPolicy
     }
 
     /*
-    Only student who created the posts can view the list of his posts
+    Only student or admin who created the posts can view the list of his posts
     */
     public function viewStudent(Student $student, Post $post)
     {
